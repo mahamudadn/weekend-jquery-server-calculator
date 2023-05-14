@@ -42,7 +42,7 @@ if('+' === output) {
 } else if ('-' === output) {
   total =  inputOne - inputTwo
 } else if ('*' === output) {
-  total = inputOne - inputTwo
+  total = inputOne * inputTwo
 } else if ('/' === output) {
   total = inputOne / inputTwo
 }

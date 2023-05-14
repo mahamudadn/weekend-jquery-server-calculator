@@ -1,57 +1,69 @@
 $(document).ready(onReady);
 
+ // listen for form submit event
 function onReady() {
     console.log('jquery is working')
 
-    $('#formValue').on('submit', ".calculator" ,sendCalculation)
+    $('#formValue').on('submit' ,sendCalculation)
+ // listen for operator button click event
     $('.calculator').on('click', callOperator)
+// listen for clear button click event
     $('#clear').on('click', clearinput)
 
   
-    
+// fetch the calculation history from the server
     getCal();
 }
-// Defined a global Variable
 
+// defined a global variable to store the selected operator
 let operator ;
 
+// event handler for operator button click
 function callOperator  (event) {
     event.preventDefault();
+ // store the selected operator in the global variable
     operator = $(this).data().value
     console.log('See our posted', operator)
 }
-
-
-// created an on click handler for on our form inputs
+// event handler for clear button click
+function clearinput() {
+    $('#Number-One').val('')
+    $('#Number-Two').val('')
+}
+// event handler for form submit
 function sendCalculation (event) {
     event.preventDefault();
+    console.log('sendcalt working');
 
     console.log('see our posted operator')
+ // retrieve the user inputs
+    let inputOne = $('#Number-One').val()
+    let inputTwo = $('#Number-Two').val()
+ // send a POST request to the server to save the calculation
+    $.ajax({
+        method: 'POST',
+        url:'/history',
+        data: {
+            inputOne, 
+            inputTwo,
+            operator
+        
+        }
 
-let inputOne = $('#Number-One').val()
-let inputTwo = $('#Number-Two').val()
-
-$.ajax({
-    method: 'POST',
-    url:'/history',
-    data: {
-        inputOne, 
-        inputTwo,
-        operator
+    }).then(function(response ) {
+// fetch the updated calculation history from the server
+        getCal();
+    })
     
-    }
-
-}).then(function(response ) {
-    getCal();
-})
 }
 
-
+// fetches the calculation history from the server
 function getCal() {
+    console.log('getcalt working')
     $.ajax({
         method:'GET',
         url:'/history',
-    }).then(function (reesponse) {
+    }).then(function (response) {
         renderToDom(response);
         console.log('Our Get Works', response)
 
@@ -60,114 +72,15 @@ function getCal() {
 }
 
 
-
+// renders the calculation history to the DOM
 function renderToDom(array) {
    let history = array[array.length -1]
-$('#solution').text(history.total)
-$('#history').append(`
-<li> ${history.inputOne} ${history.inputTwo} ${history.operator}</li>
+    $('#solution').text(history.total)
+    $('#history').append(`
+    <li> ${history.inputOne} ${history.operator} ${history.inputTwo} = ${history.total} </li>
 
-`)
+    `)
 
 }
 
 
-
-
-// function for input result.
-
-
-//.then(function (response){
-//     console.log('Succes', response)
-
-// }).catch(function(error){
-// console.log('post error', error)
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-// // set the Global Operator
-// let opperator;
-
-// function pluButton() {
-//     opperator = '+'  
-//     console.log('hello',pluButton)
-// }
-
-// function minusButton() {
-//     opperator = '-'  
-//     console.log('hello',minusButton)
-// }
-
-// function timesButton() {
-//     opperator = '*'  
-//     console.log('hello',timesButton)
-// }
-
-// function divideButton() {
-//     opperator = '/'  
-//     console.log('hello',divideButton)
-// }
-
-// // //Onclick Handler.
-// function result () {
-
-//   const number1Input =  $('#Number1').val();
-//   const input2Input=  $('#Number2').val();
-  
-
-//   console.log('is running' , result)
-
-
-
-//   $.ajax({
-//     method: 'POST',
-//     url:'/input',
-//     data:{
-//         input1: number1Input,
-//         input2: input2Input,
-//         opperator: opperator,
-//         solution:''
-//     }
-// }).then(function(response) {
-//     getData();
-//   }).catch(function(error){
-//     alert('Request Failed)',);
-//     console.log('There is ', error);
-//   })
-// }
-
-
-// function getData(){
-
-//     $.ajax({
-//         method: 'GET',
-//         url: '/input',
-//     }).then(function(response){
-//         renderToDom(response)
-//     }).catch(function(error){
-//         alert('Request Failed');
-//         console.log('There is ', error)
-//     }) 
-
-// }
-
-
-// function renderToDom(response) {
-
-//   $('#history').empty()
-
-//     for(let number of response) {
-//         $('#history').append(`<li>${number.input1}</li>`)
-//         $('#history').append(`<li>${number.input2}</li>`)
-//     }
-// }
