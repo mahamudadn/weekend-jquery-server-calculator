@@ -4,31 +4,55 @@ $(document).ready(onReady);
 function onReady() {
     console.log('jquery is working')
 
-    $('#formValue').on('submit', SendCalculation)
-    $('.when-Press').on('click', result)
+    $('#formValue').on('submit', ".when-Press" ,SendCalculation)
+    $('.when-Press').on('click', resultOp)
   
     
 
    
-    getData();
+    // getData();
 }
 // Defined a global Variable
 
 let Operator ;
 
-// created an on click handler for on our form inputs
-function SendCalculation () {
-    event.preventDefault()
-
-    Operator =$(this).data().value
-
-    console.log('see our posted operator', Operator)
-
-
-
+function resultOp () {
+    event.preventDefault();
+    $('this').data().value
+    console.log('See our posted', Operator)
 }
 
+// created an on click handler for on our form inputs
+function SendCalculation (event) {
+    event.preventDefault();
 
+    console.log('see our posted operator')
+
+let inputOne = $('#Number-One').val()
+let inputTwo = $('#Number-Two').val()
+
+$.ajax({
+    method: 'POST',
+    url:'/history',
+    data: {
+        inputOne, 
+        inputTwo,
+        // operator
+    
+    }
+
+})
+}
+
+// function for input result.
+
+
+//.then(function (response){
+//     console.log('Succes', response)
+
+// }).catch(function(error){
+// console.log('post error', error)
+// });
 
 
 
