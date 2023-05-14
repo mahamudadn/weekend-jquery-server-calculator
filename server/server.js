@@ -10,7 +10,12 @@ app.use(express.static('server/public'))
 app.use(bodyParser.urlencoded({extended:true}))
 
 
-  // start our server
+// identify which port we'll run on
+const port = 5000;
+let history = [];
+let solution = 0;
+
+
 app.listen(port, () => {
     console.log('listening on port', port);
   })
