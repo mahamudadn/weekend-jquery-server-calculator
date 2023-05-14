@@ -20,6 +20,8 @@ app.post('/history',function(req, res) {
  
 
   console.log('got the history', req.body)
+
+  history.push(req.body)
 })  
 
 

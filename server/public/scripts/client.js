@@ -1,3 +1,4 @@
+const { response } = require("express");
 
 $(document).ready(onReady);
 
@@ -10,15 +11,15 @@ function onReady() {
     
 
    
-    // getData();
+    getCal();
 }
 // Defined a global Variable
 
 let Operator ;
 
-function resultOp () {
+function resultOp (event) {
     event.preventDefault();
-    $('this').data().value
+    $(this).data().value
     console.log('See our posted', Operator)
 }
 
@@ -37,12 +38,30 @@ $.ajax({
     data: {
         inputOne, 
         inputTwo,
-        // operator
+        Operator
     
     }
 
 })
 }
+
+
+function getCal() {
+    $.ajax({
+        method:'GET',
+        url:'/history',
+    }).then(function (reesponse) {
+        console.log('Our Get Works', response)
+        
+    })
+}
+
+
+
+
+
+
+
 
 // function for input result.
 
