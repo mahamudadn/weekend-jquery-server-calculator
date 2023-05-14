@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 // identify which port we'll run on
 const port = 5000;
 let history = [];
-// let solution = 0;
+let solution = 0;
 
 const app = express();
 
@@ -18,12 +18,17 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 app.post('/history',function(req, res) {
  
+let inputs = req.body
 
-  console.log('got the history', req.body)
+  console.log('got the history', inputs)
 
-  history.push(req.body)
+  let total = Solution((inputs.inputOne/1), (inputs.inputTwo/1), inputs.operator)
+  console.log('got the history', total)
+
+  history.push({inputOne:inputs.inputOne, inputTwo:inputs, inputTwo, operator:inputs,operator, total})
 })  
-
+// 
+  // res.sendStatus(201)
 
 // function that that calculates the my inputs and return total.
 
