@@ -2,14 +2,44 @@
 $(document).ready(onReady);
 
 function onReady() {
-    console.log('jquery is workin')
-    $('.when-Press').on('click', result)
+    console.log('jquery is working')
+
     $('#formValue').on('submit', SendCalculation)
+    $('.when-Press').on('click', result)
+  
     
 
    
     getData();
 }
+// Defined a global Variable
+
+let Operator ;
+
+// created an on click handler for on our form inputs
+function SendCalculation () {
+    event.preventDefault()
+
+    Operator =$(this).data().value
+
+    console.log('see our posted operator', Operator)
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // set the Global Operator
 // let opperator;
