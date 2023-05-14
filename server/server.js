@@ -25,11 +25,23 @@ app.post('/history',function(req, res) {
 })  
 
 
+// function that that calculates the my inputs and return total.
 
-
-
-
+function Solution(inputOne, inputTwo, output) {
+  let total = 0;
+if('+' === output) {
+  total = inputOnep +inputTwo
+} else if ('-' === output) {
+  total =  inputOnep - inputTwo
+} else if ('*' === output) {
+  total = inputOne - inputTwo
+} else if ('/' === output) {
+  total = inputOne / inputTwo
+}
+   return total
+    }
+  
+   
 app.listen(port, () => {
     console.log('listening on port', port);
   })
-  
