@@ -3,26 +3,27 @@ $(document).ready(onReady);
 function onReady() {
     console.log('jquery is working')
 
-    $('#formValue').on('submit', ".when-Press" ,SendCalculation)
-    $('.when-Press').on('click', resultOp)
+    $('#formValue').on('submit', ".calculator" ,sendCalculation)
+    $('.calculator').on('click', callOperator)
+    $('#clear').on('click', clearinput)
+
   
     
-
-   
     getCal();
 }
 // Defined a global Variable
 
-let Operator ;
+let operator ;
 
-function resultOp (event) {
+function callOperator  (event) {
     event.preventDefault();
-    $(this).data().value
-    console.log('See our posted', Operator)
+    operator = $(this).data().value
+    console.log('See our posted', operator)
 }
 
+
 // created an on click handler for on our form inputs
-function SendCalculation (event) {
+function sendCalculation (event) {
     event.preventDefault();
 
     console.log('see our posted operator')
@@ -36,10 +37,12 @@ $.ajax({
     data: {
         inputOne, 
         inputTwo,
-        Operator
+        operator
     
     }
 
+}).then(function(response ) {
+    getCal();
 })
 }
 
@@ -49,14 +52,24 @@ function getCal() {
         method:'GET',
         url:'/history',
     }).then(function (reesponse) {
+        renderToDom(response);
         console.log('Our Get Works', response)
+
         
     })
 }
 
 
 
+function renderToDom(array) {
+   let history = array[array.length -1]
+$('#solution').text(history.total)
+$('#history').append(`
+<li> ${history.inputOne} ${history.inputTwo} ${history.operator}</li>
 
+`)
+
+}
 
 
 

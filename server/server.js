@@ -22,22 +22,25 @@ let inputs = req.body
 
   console.log('got the history', inputs)
 
-  let total = Solution((inputs.inputOne/1), (inputs.inputTwo/1), inputs.operator)
+  let total = Solution((inputs.inputOne*1), (inputs.inputTwo*1), inputs.operator)
   console.log('got the history', total)
 
-  history.push({inputOne:inputs.inputOne, inputTwo:inputs, inputTwo, operator:inputs,operator, total})
+  history.push({inputOne:inputs.inputOne, inputTwo:inputs.inputTwo, operator:inputs.operator, total})
+  res.sendStatus(201)
 })  
 // 
-  // res.sendStatus(201)
+ app.get('/history', function(req, res){
+  res.send(history)
+ })
 
 // function that that calculates the my inputs and return total.
 
 function Solution(inputOne, inputTwo, output) {
   let total = 0;
 if('+' === output) {
-  total = inputOnep +inputTwo
+  total = inputOne +inputTwo
 } else if ('-' === output) {
-  total =  inputOnep - inputTwo
+  total =  inputOne - inputTwo
 } else if ('*' === output) {
   total = inputOne - inputTwo
 } else if ('/' === output) {
