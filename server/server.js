@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser')
 
 // identify which port we'll run on
-const port = 5000;
+const port = process.env.PORT||5000;
 // bring express into your project
 let history = [];
 let solution = 0;
