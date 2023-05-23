@@ -30,9 +30,9 @@ let inputs = req.body
   res.sendStatus(201)
 })  
 // app get that will get my client history data.
- app.get('/history', function(req, res){
+app.get('/history', function(req, res){
   res.send(history)
- })
+})
 
 // function that that calculates the my inputs and return total.
 function Solution(inputOne, inputTwo, output) {
@@ -46,7 +46,7 @@ if('+' === output) {
 } else if ('/' === output) {
   total = inputOne / inputTwo
 }
-   return total
+  return total
     }
   
  // start listening for incoming requests on the specified port

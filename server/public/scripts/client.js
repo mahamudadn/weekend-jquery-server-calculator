@@ -10,7 +10,6 @@ function onReady() {
 // listen for clear button click event
     $('#clear').on('click', clearinput)
 
-  
 // fetch the calculation history from the server
     getCal();
 }
@@ -32,7 +31,7 @@ function clearinput() {
 }
 // event handler for form submit
 function sendCalculation (event) {
-    event.preventDefault();
+        event.preventDefault();
     console.log('sendcalt working');
 
     console.log('see our posted operator')
@@ -73,16 +72,19 @@ function getCal() {
 
 
 // renders the calculation history to the DOM
-function renderToDom(array) {
+function renderToDom(arrays) {
+    $('#solution').empty();
+    $('#history').empty();
 
-    $('#Number-One').val('')
-    $('#Number-Two').val('')
-   let history = array[array.length -1]
-    $('#solution').text(history.total)
+//    let history = array[array.length -1]
+for( array of arrays) {
+    $('#solution').text(array.total)
     $('#history').append(`
-    <li> ${history.inputOne} ${history.operator} ${history.inputTwo} = ${history.total} </li>
+    <li> ${array.inputOne} ${array.operator} ${array.inputTwo} = ${array.total} </li>
 
     `)
+}
+    
 
 }
 
