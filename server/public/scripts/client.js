@@ -74,6 +74,9 @@ function getCal() {
 
 // renders the calculation history to the DOM
 function renderToDom(array) {
+
+    $('#Number-One').val('')
+    $('#Number-Two').val('')
    let history = array[array.length -1]
     $('#solution').text(history.total)
     $('#history').append(`
