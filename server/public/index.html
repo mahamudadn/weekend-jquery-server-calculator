@@ -1,37 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
-    <script src="./vendors/jquery.js"></script>
-    <script src="./scripts/client.js"></script>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="styles/style.css">
+            <script src="./vendors/jquery.js"></script>
+            <script src="./scripts/client.js"></script>
+            
+
+        
+            <title>Server Side Calculator</title>
+        </head>
+        <body>
+            <h1>Server Side Calculator</h1>
+
+            <form id="formValue">
+        <input type="number" id="Number-One" placeholder="Number One">
+        <button class="calculator" data-value ="+">+</button>
+        <button class="calculator" data-value ="-">-</button>
+        <button class="calculator" data-value ="*">*</button>
+        <button class="calculator" data-value ="/">/</button>
+        <input type="number" id="Number-Two" placeholder="Number Two">
+
+
+        <button type ='submit' id="equal" data-value ="=">=</button>
+        <button id="clear" data-value ="c">c</button>
+
+            </form>
     
-
-  
-    <title>Server Side Calculator</title>
-</head>
-<body>
-    <h1>Server Side Calculator</h1>
-
-    <form id="formValue">
-<input type="number" id="Number-One" placeholder="Number One">
-<button class="calculator" data-value ="+">+</button>
-<button class="calculator" data-value ="-">-</button>
-<button class="calculator" data-value ="*">*</button>
-<button class="calculator" data-value ="/">/</button>
-<input type="number" id="Number-Two" placeholder="Number Two">
-
-
-<button type ='submit' id="equal" data-value ="=">=</button>
-<button id="clear" data-value ="c">c</button>
-
-    </form>
-
-    <h3 id="solution"> </h3>
-
+            <h3 id="solution"><Span>Solution</Span></h3>    
+            
+            <h3>History</h3>
     <ul id="history">  </ul>
-    
-</body>
-</html>
+            
+        </body>
+        </html>
