@@ -1,19 +1,26 @@
   body {
       background-color: #f5f5f5;
       font-family: Arial, sans-serif;
+      margin: auto 100px;
     }
     
     h1 {
       text-align: center;
       margin-top: 50px;
+      background-color: aquamarine;
+      padding: 10px;
     }
-    
+    h2 {
+      text-align: left;
+      margin-top: 50px;
+    }
     form {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       margin-top: 50px;
+      background-color: rgb(128, 83, 130);
     }
     
     input[type="number"], button {
@@ -38,22 +45,26 @@
     
     #solution {
       text-align: center;
-      margin-top: 50px;
+      padding: 15px;
+      margin: 50px 300px;
       font-size: 24px;
+      border-radius: 40%;
+      background-color: chartreuse;
     }
     
     #history {
       margin-top: 50px;
       padding: 0;
       list-style: none;
+
     }
     
     #history li {
       font-size: 18px;
-      margin: 10px;
+      margin: 10px 100px;
       padding: 10px;
       background-color: #d0d0d0;
-      border-radius: 5px;
+      border-radius: 20px;
       box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     }
 
